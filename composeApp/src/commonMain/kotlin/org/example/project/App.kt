@@ -36,57 +36,7 @@ import pruebavoyager.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     MaterialTheme {
-        var selected by remember { mutableStateOf("home") }
-        var showContent by remember { mutableStateOf(false) }
-
-        TopAppBar(
-            title = { Text(text = "home") } // muestra el nombre de la pantalla
-        )
-        Box(
-            Modifier.fillMaxSize()
-        ) {
-            when (selected) {
-                "home" -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(bottom = 96.dp) // ⚡ espacio extra para que el último ítem no quede tapado
-                    ) {
-                        items((1..30).toList()) { index ->
-                            ListItem(
-                                headlineContent = { Text("Elemento $index") },
-                                supportingContent = { Text("Detalle del elemento $index") }
-                            )
-                            Divider()
-                        }
-                    }
-                }
-                "grupo" -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Column(
-                        modifier = Modifier
-                            .background(MaterialTheme.colorScheme.primaryContainer)
-                            .safeContentPadding()
-                            .fillMaxSize(),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Text("Grupo")
-                    }
-                }
-                "perfil" -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text("Pantalla de Configuración")
-                }
-            }
-
-            // 3) Barra flotante conectada al estado
-            FloatingBottomBar(
-                selected = selected,
-                onSelect = { selected = it },
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .widthIn(max = 350.dp)   // 🔹 ancho máximo (compacta)
-                    .height(76.dp)
-                    .padding(bottom = 15.dp)
-            )
-        }
+        navigationWrapper()
     }
 }
+
