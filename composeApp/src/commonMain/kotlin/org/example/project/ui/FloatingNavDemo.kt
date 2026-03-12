@@ -1,5 +1,6 @@
 package org.example.project.ui
 
+
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.ime
@@ -40,6 +41,7 @@ fun FloatingBottomBar(
         val bottomInsets = Modifier
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom))
             .windowInsetsPadding(WindowInsets.ime.only(WindowInsetsSides.Bottom))
+            .padding(bottom = 6.dp)
 
         Box(modifier = bottomInsets) {
             Surface(
@@ -51,7 +53,6 @@ fun FloatingBottomBar(
                 tonalElevation = 12.dp,
                 shadowElevation = 12.dp
             ) {
-                // ¡Transparente! para que se vea el Surface redondeado
                 NavigationBar(
                     containerColor = Color.Transparent,
                     tonalElevation = 0.dp
